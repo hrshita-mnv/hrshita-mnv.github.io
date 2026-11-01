@@ -45,6 +45,7 @@ header.top .wrap { display: flex; justify-content: space-between; align-items: c
 nav { display: flex; gap: 24px; font-family: var(--mono); font-size: 13.5px; }
 nav a { text-decoration: none; color: var(--muted); }
 nav a:hover { color: var(--ink); }
+nav a.active { color: var(--ink); font-weight: 700; }
 
 /* Hero */
 .hero { padding: 88px 0 72px; display: grid; grid-template-columns: 1.45fr 1fr; gap: 56px; align-items: end; }
@@ -409,6 +410,22 @@ dialog button { position: fixed; top: 16px; right: 16px; font-family: var(--mono
   });
   document.getElementById("zoom-close").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+})();
+</script>
+<script>
+(() => {
+  const links = { work: document.querySelector('nav a[href="#work"]'), about: document.querySelector('nav a[href="#about"]'), contact: document.querySelector('nav a[href="#contact"]') };
+  const groups = [["work", ["work", "repoviz", "contractguard"]], ["about", ["about"]], ["contact", ["contact"]]];
+  const update = () => {
+    const y = window.scrollY + 140;
+    let current = null;
+    for (const [key, ids] of groups) for (const id of ids) { const el = document.getElementById(id); if (el && el.offsetTop <= y) current = key; }
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) current = "contact";
+    for (const [k, a] of Object.entries(links)) if (a) a.classList.toggle("active", k === current);
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 })();
 </script>
 </body>
