@@ -96,7 +96,10 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 .links { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 10px; font-family: var(--mono); font-size: 13.5px; text-decoration: none; border: 1px solid var(--ink); }
 .btn.primary { background: var(--ink); color: var(--paper); }
-.btn:hover { border-color: var(--accent); }
+.btn { background: transparent; cursor: pointer; color: var(--ink); }
+button.btn { line-height: inherit; }
+.btn { transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.btn:not(.primary):hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .btn.primary:hover { background: var(--accent); }
 
 figure { margin: 40px 0; }
@@ -382,7 +385,7 @@ dialog button { position: fixed; top: 16px; right: 16px; font-family: var(--mono
       <h2>Have a confusing screen? I’d love to work on it.</h2>
       <div class="row">
         <span class="addr">manavharshita@gmail.com</span>
-        <a class="btn primary" href="mailto:manavharshita@gmail.com">Email me</a>
+        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=manavharshita@gmail.com" target="_blank" rel="noopener">Email me ↗</a>
         <a class="btn" href="https://www.linkedin.com/in/harshita-manav-ba4932370/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a class="btn" href="https://github.com/hrshita-mnv" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
